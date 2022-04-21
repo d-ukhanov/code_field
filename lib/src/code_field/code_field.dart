@@ -74,6 +74,7 @@ class CodeField extends StatefulWidget {
   final Color? background;
   final EdgeInsets padding;
   final Decoration? decoration;
+  final InputDecoration? inputDecoration;
   final TextSelectionThemeData? textSelectionTheme;
   final FocusNode? focusNode;
   final void Function()? onTap;
@@ -115,6 +116,7 @@ class CodeField extends StatefulWidget {
     this.autoComplete,
     this.textInputAction,
     this.enableSuggestions = false,
+    this.inputDecoration,
   }) : super(key: key);
 
   @override
@@ -341,14 +343,15 @@ class _CodeFieldState extends State<CodeField> {
       maxLines: widget.maxLines,
       expands: widget.expands,
       scrollController: _codeScroll,
-      decoration: InputDecoration(
-        disabledBorder: InputBorder.none,
-        border: InputBorder.none,
-        focusedBorder: InputBorder.none,
-        isDense: widget.isDense,
-        hintText: widget.hintText,
-        hintStyle: widget.hintStyle,
-      ),
+      decoration: widget.inputDecoration ??
+          InputDecoration(
+            disabledBorder: InputBorder.none,
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            isDense: widget.isDense,
+            hintText: widget.hintText,
+            hintStyle: widget.hintStyle,
+          ),
       onTapOutside: (e) {
         Future.delayed(const Duration(milliseconds: 300), hideAutoComplete);
       },
