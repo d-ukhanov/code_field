@@ -95,6 +95,7 @@ class CodeField extends StatefulWidget {
   final Color? background;
   final EdgeInsets padding;
   final Decoration? decoration;
+  final InputDecoration? inputDecoration;
   final TextSelectionThemeData? textSelectionTheme;
   final FocusNode? focusNode;
 
@@ -117,6 +118,7 @@ class CodeField extends StatefulWidget {
     this.lineNumberBuilder,
     this.focusNode,
     this.onChanged,
+    this.inputDecoration,
   }) : super(key: key);
 
   @override
@@ -129,6 +131,7 @@ class CodeFieldState extends State<CodeField> {
   ScrollController? _numberScroll;
   ScrollController? _codeScroll;
   LineNumberController? _numberController;
+
   //
   StreamSubscription<bool>? _keyboardVisibilitySubscription;
   FocusNode? _focusNode;
@@ -281,11 +284,12 @@ class CodeFieldState extends State<CodeField> {
       maxLines: widget.maxLines,
       expands: widget.expands,
       scrollController: _codeScroll,
-      decoration: InputDecoration(
-        disabledBorder: InputBorder.none,
-        border: InputBorder.none,
-        focusedBorder: InputBorder.none,
-      ),
+      decoration: widget.inputDecoration ??
+          InputDecoration(
+            disabledBorder: InputBorder.none,
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+          ),
       cursorColor: cursorColor,
       autocorrect: false,
       enableSuggestions: false,
