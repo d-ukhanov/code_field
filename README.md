@@ -11,7 +11,7 @@ A customizable code text field supporting syntax highlighting
 
 ## Live demo
 
-A [live demo](https://bertrandbev.github.io/code_field/#/) showcasing a few language / themes combinaisons 
+A [live demo](https://bertrandbev.github.io/code_field/#/) showcasing a few language / theme combinations 
 
 ## Showcase
 
@@ -53,7 +53,7 @@ dependencies:
 In your library add the following import:
 
 ```dart
-import 'package:code_text_field/code_field.dart';
+import 'package:code_text_field/code_text_field.dart';
 ```
 
 
@@ -176,65 +176,71 @@ class TabModifier extends CodeModifier {
 }
 ```
 
-
 ## API
 
 ### CodeField
 
 ```dart
-CodeField({
-Key? key,
-  required this.controller,
-  this.minLines,
-  this.maxLines,
-  this.expands = false,
-  this.wrap = false,
-  this.background,
-  this.decoration,
-  this.textStyle,
-  this.padding = const EdgeInsets.symmetric(),
-  this.lineNumberStyle = const LineNumberStyle(),
-  this.enabled,
-  this.cursorColor,
-  this.textSelectionTheme,
-  this.lineNumberBuilder,
-  this.focusNode,
-})
+const CodeField({
+    Key? key,
+    required this.controller,
+    this.minLines,
+    this.maxLines,
+    this.expands = false,
+    this.wrap = false,
+    this.background,
+    this.decoration,
+    this.textStyle,
+    this.padding = EdgeInsets.zero,
+    this.lineNumberStyle = const LineNumberStyle(),
+    this.enabled,
+    this.onTap,
+    this.readOnly = false,
+    this.cursorColor,
+    this.textSelectionTheme,
+    this.lineNumberBuilder,
+    this.focusNode,
+    this.onChanged,
+    this.isDense = false,
+    this.smartQuotesType,
+    this.keyboardType,
+    this.lineNumbers = true,
+    this.horizontalScroll = true,
+    this.selectionControls,
+  })
 ```
+### LineNumberStyle
 
 ```dart
-LineNumberStyle({
-  this.width = 42.0,
-  this.textAlign = TextAlign.right,
-  this.margin = 10.0,
-  this.textStyle,
-  this.background,
-})
+  const LineNumberStyle({
+    this.width = 42.0,
+    this.textAlign = TextAlign.right,
+    this.margin = 10.0,
+    this.textStyle,
+    this.background,
+  });
 ```
 
 ### CodeController
 
 ```dart
 CodeController({
-  String? text,
-  this.language,
-  this.theme,
-  this.patternMap,
-  this.stringMap,
-  this.params = const EditorParams(),
-  this.modifiers = const <CodeModifier>[
-    const IntendModifier(),
-    const CloseBlockModifier(),
-    const TabModifier(),
-  ],
-  this.onChange,
-})
+    String? text,
+    Mode? language,
+    this.patternMap,
+    this.stringMap,
+    this.params = const EditorParams(),
+    this.modifiers = const [
+      IndentModifier(),
+      CloseBlockModifier(),
+      TabModifier(),
+    ],
+  }) 
 ```
 
 ## Limitations
 
 - Autocomplete disabling on android [doesn't work yet](https://github.com/flutter/flutter/issues/71679)
-- The TextField cursor doesn't seem to be handling space inputs properly on the web platform. Pending [issue resolution](https://github.com/flutter/flutter/issues/77929). The flag `webSpaceFix` fixes it by swapping spaces with transparent middle points.
 
 ## Notes
 
