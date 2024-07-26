@@ -1,9 +1,9 @@
 import 'package:example/custom_code_box.dart';
 // import 'package:example/readme/readme_examples.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(MyApp());
@@ -98,8 +98,8 @@ class _HomePageState extends State<HomePage> {
         actions: [
           TextButton.icon(
             style: TextButton.styleFrom(
+              foregroundColor: Colors.white,
               padding: EdgeInsets.symmetric(horizontal: 8.0),
-              primary: Colors.white,
             ),
             icon: Icon(FontAwesomeIcons.github),
             onPressed: () =>
