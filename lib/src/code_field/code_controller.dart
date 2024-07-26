@@ -83,7 +83,7 @@ class CodeController extends TextEditingController {
       _styleList.addAll(stringMap!.values);
     }
     if (patternMap != null) {
-      patternList.addAll(patternMap!.keys.map((e) => r'($e)'));
+      patternList.addAll(patternMap!.keys.map((e) => '($e)'));
       _styleList.addAll(patternMap!.values);
     }
     _styleRegExp = RegExp(patternList.join('|'), multiLine: true, unicode: true);
